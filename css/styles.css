@@ -1,4 +1,4 @@
 /* Styles is a file to link all CSS files to the project */
-@import url('./base.css');
-@import url('./components.css');
-@import url('./pages.css');
+@import url('/css/base.css');
+@import url('/css/components.css');
+@import url('/css/pages.css');

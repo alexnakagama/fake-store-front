@@ -1,49 +1,37 @@
 /* Components is a file for component-specific styles */
 
-.card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  overflow: hidden;
-  transition: transform 0.15s, box-shadow 0.15s;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+/* --- NAVBAR --- */
+.navbar {
+  background-color: var(--color-surface) !important;
+  border-bottom: 1px solid #e8e4de;
+  padding: 1rem 0;
 }
 
-.card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary) !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.card-img-top {
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-  background: #f7f7f7;
-  padding: 16px;
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary) !important;
+  transition: color 0.2s;
 }
 
-.card-body {
-  padding: 16px;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
+.nav-link:hover {
+  color: var(--color-accent) !important;
 }
 
-.card-title {
-  font-size: 1.1rem;
+.badge {
+  background-color: var(--color-accent) !important;
+  color: var(--color-primary);
   font-weight: 600;
-  margin-bottom: 8px;
-  color: #222;
 }
-
-.card-text {
-  font-size: 0.95rem;
-  color: #555;
-  flex: 1 1 auto;
-  margin-bottom: 12px;
-}
-
-/* -------------------------------------------------------- */
 
