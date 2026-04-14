@@ -4,3 +4,9 @@
 
 import {renderNavbar} from "./components/navbar.js"
 renderNavbar()
+
+window.addEventListener("storage", (e) => {
+    if (e.key === "fakestore_cart") {
+        renderNavbar();
+    }
+}) 
