@@ -1,5 +1,7 @@
 // File to handle the navigation bar functionality
 
+import { getCartCount } from "../storage/storage.js";
+
 export function renderNavbar() {
   const navbarContainer = document.getElementById('navbar');
   if (!navbarContainer) return;
@@ -21,7 +23,7 @@ export function renderNavbar() {
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/views/cart.html">
-                <span id="cart-count" class="badge bg-primary">0</span>
+                Cart <span id="cart-count" class="badge">${getCartCount() || ""}</span>
               </a>
             </li>
           </ul>

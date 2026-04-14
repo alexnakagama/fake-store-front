@@ -2,12 +2,17 @@
 
 import { getProductById } from "../api/products.js";
 import { getProducts } from "../api/products.js";
+import { addToCart, getCartCount } from "../storage/storage.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 
+let currentProduct = null;
+
 if (productId) {
     getProductById(productId).then((p) => {
+        currentProduct = p;
+
         // Breadcrumb
         document.getElementById("breadcrumb-product-name").textContent = p.title;
 
@@ -46,6 +51,25 @@ if (productId) {
 } else {
     window.location.href = "/views/products.html";
 }
+
+document.getElementById("btn-add-to-cart").addEventListener("click", () => {
+    if (!currentProduct) return;
+    addToCart(currentProduct);
+
+    // Update badge in navbar
+    const badge = document.getElementById("cart-count");
+    if (badge) badge.textContent = getCartCount();
+
+    // Visual feedback
+    const btn = document.getElementById("btn-add-to-cart");
+    const original = btn.textContent;
+    btn.textContent = "Added!";
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+    }, 1200);
+});
 
 function loadRecommendations(currentId, currentCategory) {
     getProducts().then((products) => {
