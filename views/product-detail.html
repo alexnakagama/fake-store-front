@@ -38,12 +38,22 @@
           <div class="product-detail-rating" id="product-detail-rating"></div>
           <p class="product-detail-price" id="product-detail-price"></p>
           <p class="product-detail-description" id="product-detail-description"></p>
-          <div>
+          <div class="d-flex gap-3 align-items-center flex-wrap">
             <button class="btn-add-to-cart" id="btn-add-to-cart">Add to Cart</button>
+            <a href="/views/products.html" class="btn-back-to-products">← Back to Products</a>
           </div>
         </div>
 
       </div>
+
+      <!-- Recommendations -->
+      <section class="recommendations-section">
+        <div class="recommendations-header">
+          <h2 class="recommendations-title">You may also like</h2>
+        </div>
+        <div class="row row-cols-2 row-cols-md-4 g-4" id="recommendations-list"></div>
+      </section>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
