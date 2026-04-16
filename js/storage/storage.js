@@ -59,5 +59,5 @@ export function getCartTotal() {
 }
 
 export function clearCart() {
-    localStorage.removeItem(CART_KEY);
+    saveCart([]);
 }

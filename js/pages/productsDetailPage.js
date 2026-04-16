@@ -2,7 +2,8 @@
 
 import { getProductById } from "../api/products.js";
 import { getProducts } from "../api/products.js";
-import { addToCart, getCartCount } from "../storage/storage.js";
+import { addToCart } from "../storage/storage.js";
+import { updateCartBadge, showToast } from "../components/cartSidebar.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
@@ -57,10 +58,12 @@ document.getElementById("btn-add-to-cart").addEventListener("click", () => {
     addToCart(currentProduct);
 
     // Update badge in navbar
-    const badge = document.getElementById("cart-count");
-    if (badge) badge.textContent = getCartCount();
+    updateCartBadge();
 
-    // Visual feedback
+    // Toast notification
+    showToast(`"${currentProduct.title.slice(0, 40)}..." agregado al carrito.`);
+
+    // Visual feedback on button
     const btn = document.getElementById("btn-add-to-cart");
     const original = btn.textContent;
     btn.textContent = "Added!";

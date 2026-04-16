@@ -1,6 +1,7 @@
 // File to handle the cart page functionality
 
 import { getCart, removeFromCart, updateQuantity, getCartCount, getCartTotal, clearCart } from "../storage/storage.js";
+import { updateCartBadge } from "../components/cartSidebar.js";
 
 function renderCart() {
     const cart = getCart();
@@ -51,7 +52,7 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     if (e.target.classList.contains("cart-remove-btn")) {
         removeFromCart(id);
         renderCart();
-        updateNavbarBadge();
+        updateCartBadge();
     }
 
     if (e.target.dataset.action === "increase") {
@@ -59,7 +60,7 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
         const item = cart.find(i => i.id === id);
         if (item) updateQuantity(id, item.quantity + 1);
         renderCart();
-        updateNavbarBadge();
+        updateCartBadge();
     }
 
     if (e.target.dataset.action === "decrease") {
@@ -67,7 +68,7 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
         const item = cart.find(i => i.id === id);
         if (item) updateQuantity(id, item.quantity - 1);
         renderCart();
-        updateNavbarBadge();
+        updateCartBadge();
     }
 });
 
@@ -75,13 +76,8 @@ document.getElementById("btn-checkout").addEventListener("click", () => {
     if (getCart().length === 0) return;
     clearCart();
     renderCart();
-    updateNavbarBadge();
+    updateCartBadge();
     document.getElementById("btn-checkout").textContent = "Order placed!";
 });
-
-function updateNavbarBadge() {
-    const badge = document.getElementById("cart-count");
-    if (badge) badge.textContent = getCartCount() || "";
-}
 
 renderCart();
