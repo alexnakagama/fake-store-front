@@ -56,9 +56,15 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     }
 
     if (e.target.dataset.action === "increase") {
-        const cart = getCart();
-        const item = cart.find(i => i.id === id);
-        if (item) updateQuantity(id, item.quantity + 1);
+    const cart = getCart();
+    const item = cart.find(i => i.id === id);
+        if (item) {
+            if (item.quantity < 20) {
+                updateQuantity(id, item.quantity + 1);
+            } else {
+                alert("You cannot add more than 20 items");
+            }
+        }
         renderCart();
         updateCartBadge();
     }

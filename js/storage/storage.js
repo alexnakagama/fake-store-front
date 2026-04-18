@@ -42,10 +42,11 @@ export function updateQuantity(productId, quantity) {
         removeFromCart(productId);
         return;
     }
+    const limitedQuantity = Math.min(quantity, 20);
     const cart = getCart();
     const item = cart.find(i => i.id === productId);
     if (item) {
-        item.quantity = quantity;
+        item.quantity = limitedQuantity;
         saveCart(cart);
     }
 }
